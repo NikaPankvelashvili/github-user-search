@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from 'react'
+import Header from './components/Header'
+import SearchBar from './components/SearchBar'
+import UserInfo from './components/UserInfo';
+import './index.css'
+
+
+export const ThemeContext = createContext(null);
+
 
 function App() {
+  const [userData, setuserData] = useState(null);
+  const [userFound, setuserFound] = useState(true);
+  const [theme, setTheme] = useState("light");
+
+  const fetchUser = async (user) => {
+    const response = await fetch(`https://api.github.com/users/${user}`);
+
+    // eslint-disable-next-line
+    if (response.status == "200") {
+      const data = await response.json();
+      setuserData(data);
+      setuserFound(true);
+    } else {
+      setuserFound(false);
+    }
+  }
+
+  // useEffect(() => {
+  //   fetchUser("fabpot")
+  // }, []);
+
+  const toggleTheme = (curr) => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className='app dark' id={theme}>
+        <Header />
+        <SearchBar fetchUser={fetchUser} userFound={userFound} setUserFound={setuserFound} />
+        <UserInfo userData={userData} />
+      </div>
+    </ThemeContext.Provider>
+  )
 }
 
-export default App;
+export default App

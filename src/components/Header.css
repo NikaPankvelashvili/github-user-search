@@ -1,0 +1,44 @@
+.header-logo {
+  width: 128px;
+  height: 39px;
+  margin-bottom: 35px;
+}
+
+#dark .header-logo,
+.sun {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(4%) saturate(0%) hue-rotate(219deg) brightness(105%) contrast(103%);
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+  cursor: pointer;
+}
+
+#light .sun {
+  filter: brightness(0) saturate(100%) invert(46%) sepia(32%) saturate(359%) hue-rotate(177deg) brightness(96%) contrast(89%);
+}
+
+.theme-text {
+  font-size: 13px;
+  line-height: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 7px;
+}
+
+#light .theme-text {
+  color: #697C9A;
+}
+
+#dark .theme-text {
+  color: #FFFFFF;
+}
