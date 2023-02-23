@@ -9,18 +9,21 @@
 body {
   font-family: 'Space Mono';
   overflow-x: hidden;
+
 }
 
 #dark {
   background-color: #141D2F;
+  min-height: 100vh;
 }
 
 #light {
   background-color: #F2F2F2;
+  min-height: 100vh;
 }
 
 .app {
-  height: 100vh;
+  height: 100%;
   padding: 31px 24px 79px 24px;
 }
 
@@ -35,5 +38,6 @@ body {
 @media (min-width: 1450px) {
   .app {
     padding: 110px 355px 110px 355px;
+    /* height: 100%; */
   }
 }

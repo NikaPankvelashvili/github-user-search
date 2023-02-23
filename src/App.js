@@ -34,9 +34,10 @@ function App() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"))
   }
 
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className='app dark' id={theme}>
+      <div className='app' id={theme}>
         <Header />
         <SearchBar fetchUser={fetchUser} userFound={userFound} setUserFound={setuserFound} />
         <UserInfo userData={userData} />
