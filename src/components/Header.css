@@ -24,6 +24,7 @@
 
 #light .sun {
   filter: brightness(0) saturate(100%) invert(46%) sepia(32%) saturate(359%) hue-rotate(177deg) brightness(96%) contrast(89%);
+  user-select: none;
 }
 
 .theme-text {
@@ -37,8 +38,16 @@
 
 #light .theme-text {
   color: #697C9A;
+  user-select: none;
 }
 
 #dark .theme-text {
   color: #FFFFFF;
+  user-select: none;
+}
+
+.sun,
+.moon,
+.header-logo {
+  user-select: none;
 }

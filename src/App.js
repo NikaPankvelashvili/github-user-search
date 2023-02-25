@@ -11,7 +11,7 @@ export const ThemeContext = createContext(null);
 function App() {
   const [userData, setuserData] = useState(null);
   const [userFound, setuserFound] = useState(true);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") == null ? "light" : localStorage.getItem('theme'));
 
   const fetchUser = async (user) => {
     const response = await fetch(`https://api.github.com/users/${user}`);
@@ -26,12 +26,10 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   fetchUser("fabpot")
-  // }, []);
-
   const toggleTheme = (curr) => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"))
+    const newTheme = curr === "light" ? "dark" : "light"
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
   }
 
 

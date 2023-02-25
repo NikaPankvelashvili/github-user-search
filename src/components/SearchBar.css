@@ -74,6 +74,7 @@ input::placeholder {
 .search-icon {
   height: 23px;
   width: 23px;
+  user-select: none;
 }
 
 .search-btn:hover {
